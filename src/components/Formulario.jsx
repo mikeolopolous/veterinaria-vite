@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 import Error from "./Error"
 
-const Formulario = ({pacientes, setPacientes, paciente}) => {
+const Formulario = ({pacientes, setPacientes, paciente, setPaciente}) => {
 
   const [mascota, setMascota] = useState('')
   const [propietario, setPropietario] = useState('')
@@ -48,10 +48,11 @@ const Formulario = ({pacientes, setPacientes, paciente}) => {
     }
 
     if(paciente.id) {
-
       objPaciente.id = paciente.id
 
       const updatePacientes = pacientes.map( pacienteState => pacienteState.id === paciente.id ? objPaciente : pacienteState)
+      setPacientes(updatePacientes)
+      setPaciente({})
 
     } else {
       objPaciente.id = generarId()
